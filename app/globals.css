@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --deep-night: #0b1d3a;
+  --midnight: #0f2a5f;
+  --moonlight: #e6f0ff;
+  --moon-glow: #c7d9ff;
+  --gold-glow: #ffd76a;
+  --card-bg: rgba(15, 35, 70, 0.65);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--moonlight);
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 10%, #163a7a 0%, transparent 35%),
+    radial-gradient(circle at 80% 20%, #102a5c 0%, transparent 30%),
+    linear-gradient(140deg, var(--deep-night), var(--midnight));
+  overflow-x: hidden;
+}
+
+.night-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(2px 2px at 20% 35%, rgba(255, 255, 255, 0.28), transparent),
+    radial-gradient(1px 1px at 40% 10%, rgba(255, 255, 255, 0.22), transparent),
+    radial-gradient(1px 1px at 65% 30%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(2px 2px at 85% 60%, rgba(255, 255, 255, 0.24), transparent);
+  pointer-events: none;
+  animation: drift 18s linear infinite;
+  opacity: 0.45;
+  z-index: -1;
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(230, 240, 255, 0.26);
+}
+
+.upcoming-time {
+  color: #181300;
+  background: linear-gradient(130deg, #ffe69a, var(--gold-glow));
+  box-shadow: 0 0 18px rgba(255, 215, 106, 0.45);
+}
