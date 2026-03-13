@@ -3,7 +3,7 @@ import { Role } from "@prisma/client";
 export type MosqueInput = {
   name: string;
   location: string;
-  image?: string;
+  image?: string | null;
   zuhrJamaat: string;
   fajrOnFive: number;
   fajrOffFive: number;
