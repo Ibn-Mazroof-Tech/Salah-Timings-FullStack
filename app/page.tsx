@@ -14,6 +14,7 @@ export default async function Page() {
     <HomeClient
       mosques={mosques.map((m) => ({
         ...m,
+         image: m.image ?? undefined,
         createdAt: m.createdAt.toISOString(),
         updatedAt: m.updatedAt.toISOString()
       }))}
